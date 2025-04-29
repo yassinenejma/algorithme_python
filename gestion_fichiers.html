@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des fichiers en Python</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; margin: 0; padding: 0; }
+    .container { max-width: 900px; margin: 2rem auto; background: #fff; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    header { text-align: center; margin-bottom: 2rem; }
+    header h1 { margin: 0; color: #4CAF50; }
+    .subtitle { color: #777; }
+    h2 { color: #4CAF50; margin-top: 2rem; }
+    figure { margin: 1rem 0; text-align: center; }
+    figure img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+    figcaption { font-size: 0.9rem; color: #555; margin-top: 0.5rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-left: 4px solid #4CAF50; }
+    code { font-family: 'Source Code Pro', monospace; }
+    .exercise { background: #e8f5e9; padding: 1rem; border-left: 4px solid #2e7d32; margin-top: 2rem; }
+    .exercise h2 { margin-top: 0; }
+    footer { text-align: center; margin-top: 2rem; color: #777; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Gestion des fichiers en Python</h1>
+      <p class="subtitle">Cours détaillé avec exemples pratiques et exercices</p>
+    </header>
+    <section>
+      <h2>Introduction</h2>
+      <p>La gestion des fichiers est essentielle pour la persistance de données. Python fournit des fonctions et bibliothèques intégrées (<code>open()</code>, <code>os</code>, <code>shutil</code>) pour créer, lire, écrire et manipuler des fichiers.</p>
+      <figure>
+        <img src="images/gestion_fichiers.svg" alt="Illustration Gestion des Fichiers">
+        <figcaption>Concepts de base de la gestion de fichiers en Python</figcaption>
+      </figure>
+      <p>Un fichier est une ressource de stockage permanente sur disque, pouvant contenir du texte ou des données binaires (images, audio). Chaque fichier est identifié par un chemin unique, possède un encodage (UTF-8, ASCII…) et doit être fermé après utilisation. L'instruction <code>with</code> garantit la fermeture automatique et libère les ressources.</p>
+    </section>
+    <section>
+      <h2>1. Ouvrir un fichier</h2>
+      <p>La fonction <code>open()</code> ouvre un fichier et renvoie un objet fichier. Le mode d'ouverture (<code>'r'</code>, <code>'w'</code>, <code>'a'</code>, <code>'b'</code>) définit l'opération.</p>
+      <figure>
+        <img src="images/ouverture_fichier.svg" alt="Illustration Ouverture de fichier">
+        <figcaption>Illustration Ouverture de fichier en Python</figcaption>
+      </figure>
+      <p>Le paramètre <code>mode</code> détermine l'opération : <code>'r'</code> (lecture), <code>'w'</code> (écriture/création), <code>'a'</code> (ajout). Ajoutez <code>'b'</code> pour ouvrir en mode binaire. Le paramètre <code>encoding</code> précise la norme de décodage des octets en caractères.</p>
+      <pre><code class="python"># Ouvrir en mode lecture
+with open('exemple.txt', 'r', encoding='utf-8') as f:
+    contenu = f.read()
+    print(contenu)</code></pre>
+    </section>
+    <section>
+      <h2>2. Lire un fichier</h2>
+      <p>Vous pouvez lire le fichier ligne par ligne ou en une seule fois :</p>
+      <figure>
+        <img src="images/lecture_fichier.svg" alt="Illustration Lecture de fichier">
+        <figcaption>Illustration Lecture de fichier en Python</figcaption>
+      </figure>
+      <p>La méthode <code>read()</code> renvoie tout le contenu sous forme de chaîne, ce qui peut consommer beaucoup de mémoire pour de gros fichiers. L'itération (<code>for ligne in f</code>) lit ligne par ligne sans tout charger. <code>readlines()</code> renvoie une liste de lignes.</p>
+      <pre><code class="python"># Lire ligne par ligne
+with open('exemple.txt', 'r', encoding='utf-8') as f:
+    for ligne in f:
+        print(ligne.strip())
+
+# Lire toutes les lignes dans une liste
+with open('exemple.txt', 'r', encoding='utf-8') as f:
+    lignes = f.readlines()
+    print(lignes)</code></pre>
+    </section>
+    <section>
+      <h2>3. Écrire dans un fichier</h2>
+      <p>Utilisez les modes <code>'w'</code> (écrase) et <code>'a'</code> (ajoute) :</p>
+      <figure>
+        <img src="images/ecriture_fichier.svg" alt="Illustration Écriture de fichier">
+        <figcaption>Illustration Écriture de fichier en Python</figcaption>
+      </figure>
+      <p>En mode <code>'w'</code>, le fichier est créé ou écrasé, en mode <code>'a'</code>, le contenu est ajouté à la fin. Utilisez <code>f.flush()</code> pour forcer l'écriture et <code>close()</code> si vous n'utilisez pas <code>with</code>. Pour des formats structurés, on peut aussi utiliser les modules <code>csv</code> ou <code>json</code>.</p>
+      <pre><code class="python"># Écrire (mode 'w')
+with open('sortie.txt', 'w', encoding='utf-8') as f:
+    f.write('Ligne insérée\n')
+
+# Ajouter (mode 'a')
+with open('sortie.txt', 'a', encoding='utf-8') as f:
+    f.write('Autre ligne\n')
+
+import csv
+with open('data.csv', 'w', newline='', encoding='utf-8') as f:
+    writer = csv.writer(f)
+    writer.writerow(['Nom', 'Age'])
+    writer.writerow(['Alice', 30])</code></pre>
+    </section>
+    <section>
+      <h2>4. Manipulations avancées</h2>
+      <p>Le module <code>os</code> et <code>shutil</code> permettent de renommer, déplacer et supprimer :</p>
+      <figure>
+        <img src="images/manipulations_avancees.svg" alt="Illustration Manipulations avancées">
+        <figcaption>Illustration des manipulations avancées</figcaption>
+      </figure>
+      <p>Le module <code>os</code> propose des fonctions de bas niveau proches de l'API système, tandis que <code>pathlib</code> offre une interface orientée objet plus lisible. Le module <code>shutil</code> fournit des utilitaires de haut niveau, comme <code>shutil.move()</code>, utile pour déplacer ou renommer simultanément.</p>
+      <pre><code class="python">import os
+import shutil
+
+# Renommer un fichier
+os.rename('ancien.txt', 'nouveau.txt')
+
+# Copier un fichier
+dest = 'backup/nouveau.txt'
+shutil.copy('nouveau.txt', dest)
+
+# Supprimer un fichier
+os.remove('nouveau.txt')
+
+from pathlib import Path
+# Créer un répertoire
+Path('archive').mkdir(exist_ok=True)
+# Lister les .txt dans un dossier
+for fichier in Path('.').glob('*.txt'):
+    print(fichier.name)</code></pre>
+    </section>
+    <section>
+      <h2>5. Gestion des exceptions</h2>
+      <p>Traitez les erreurs d'I/O pour sécuriser votre code :</p>
+      <figure>
+        <img src="images/exceptions.svg" alt="Illustration Gestion des exceptions">
+        <figcaption>Illustration Gestion des exceptions</figcaption>
+      </figure>
+      <p>Les exceptions courantes incluent <code>FileNotFoundError</code> (fichier absent), <code>PermissionError</code> (droits insuffisants) et <code>IOError</code> (autres erreurs d'I/O). On peut capturer chaque type pour fournir des messages d'erreur précis et logguer avec <code>logging</code>.</p>
+      <pre><code class="python">try:
+    with open('inconnu.txt', 'r', encoding='utf-8') as f:
+        data = f.read()
+except FileNotFoundError:
+    print('Le fichier n\'existe pas !')
+except IOError as e:
+    print(f'Erreur I/O : {e}')
+finally:
+    print('Opération terminée.')
+
+import logging
+logging.basicConfig(level=logging.ERROR, filename='error.log')
+try:
+    # votre code
+    pass
+except Exception as e:
+    logging.exception('Erreur inattendue')</code></pre>
+    </section>
+    <section>
+      <h2>6. Exemple pratique</h2>
+      <p>Script pour compter le nombre de lignes dans un fichier :</p>
+      <pre><code class="python">def compter_lignes(nom_fichier):
+    with open(nom_fichier, 'r', encoding='utf-8') as f:
+        return sum(1 for _ in f)
+
+if __name__ == '__main__':
+    chemin = 'exemple.txt'
+    print(f"{chemin} contient {compter_lignes(chemin)} lignes.")
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('fichier', help='Chemin du fichier à analyser')
+args = parser.parse_args()
+print(f"{args.fichier} contient {compter_lignes(args.fichier)} lignes.")</code></pre>
+      <p>La fonction <code>compter_lignes</code> utilise un générateur et la fonction <code>sum()</code> pour parcourir efficacement le fichier sans le charger entièrement en mémoire. Le bloc <code>if __name__ == '__main__'</code> permet d'exécuter ce code uniquement lorsque le script est lancé directement, et non lorsqu'il est importé comme module.</p>
+      <p>Le module <code>argparse</code> permet de passer des arguments en ligne de commande (ici le chemin du fichier) et génère automatiquement une aide (<code>-h</code>).</p>
+    </section>
+    <section class="exercise">
+      <h2>Exercices</h2>
+      <ol>
+        <li>Écrire un script qui lit un fichier et compte le nombre de lignes ne contenant pas de commentaires (<code>#</code>).</li>
+        <li>Créer un dossier <code>archive</code> et déplacer tous les fichiers <code>.txt</code> en utilisant <code>os</code> ou <code>shutil</code>.</li>
+        <li>Écrire un programme qui fusionne deux fichiers texte <code>f1.txt</code> et <code>f2.txt</code> en <code>fusion.txt</code>.</li>
+        <li>Gérer proprement les exceptions pour chaque opération de fichier.</li>
+      </ol>
+    </section>
+    <footer>
+      <p>&copy; 2025 Cours Python — Tous droits réservés</p>
+    </footer>
+  </div>
+</body>
+</html>

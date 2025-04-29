@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360">
+  <rect x="250" y="10" width="100" height="40" fill="#e3f2fd" stroke="#90caf9" stroke-width="2"/>
+  <text x="300" y="35" text-anchor="middle" font-family="Roboto, sans-serif" font-size="14">Début</text>
+  <line x1="300" y1="50" x2="300" y2="80" stroke="#000" stroke-width="2"/>
+  <!-- Condition 1 -->
+  <polygon points="300,80 360,120 300,160 240,120" fill="#fff3e0" stroke="#ffb74d" stroke-width="2"/>
+  <text x="300" y="120" text-anchor="middle" font-family="Roboto, sans-serif" font-size="14">condition1 ?</text>
+  <line x1="260" y1="120" x2="200" y2="180" stroke="#000" stroke-width="2"/>
+  <text x="180" y="212" font-family="Roboto, sans-serif" font-size="12">VRAI</text>
+  <rect x="140" y="180" width="120" height="40" fill="#e8f5e9" stroke="#a5d6a7" stroke-width="2"/>
+  <text x="200" y="205" text-anchor="middle" font-family="Roboto, sans-serif" font-size="14">action1</text>
+  <line x1="340" y1="120" x2="300" y2="220" stroke="#000" stroke-width="2"/>
+  <!-- Condition 2 -->
+  <polygon points="300,220 360,260 300,300 240,260" fill="#fff3e0" stroke="#ffb74d" stroke-width="2"/>
+  <text x="300" y="260" text-anchor="middle" font-family="Roboto, sans-serif" font-size="14">condition2 ?</text>
+  <line x1="260" y1="260" x2="200" y2="320" stroke="#000" stroke-width="2"/>
+  <text x="180" y="352" font-family="Roboto, sans-serif" font-size="12">VRAI</text>
+  <rect x="140" y="320" width="120" height="40" fill="#e8f5e9" stroke="#a5d6a7" stroke-width="2"/>
+  <text x="200" y="345" text-anchor="middle" font-family="Roboto, sans-serif" font-size="14">action2</text>
+  <line x1="340" y1="260" x2="360" y2="320" stroke="#000" stroke-width="2"/>
+  <text x="380" y="312" font-family="Roboto, sans-serif" font-size="12">FAUX</text>
+  <rect x="360" y="320" width="160" height="60" fill="#ffebee" stroke="#ef9a9a" stroke-width="2"/>
+  <text x="440" y="350" text-anchor="middle" font-family="Roboto, sans-serif" font-size="14">action_defaut</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300">
+  <rect x="250" y="10" width="100" height="40" fill="#e3f2fd" stroke="#90caf9" stroke-width="2"/>
+  <text x="300" y="35" text-anchor="middle" font-family="Roboto, sans-serif" font-size="14">Début</text>
+  <line x1="300" y1="50" x2="300" y2="80" stroke="#000" stroke-width="2"/>
+  <polygon points="300,80 360,120 300,160 240,120" fill="#fff3e0" stroke="#ffb74d" stroke-width="2"/>
+  <text x="300" y="120" text-anchor="middle" font-family="Roboto, sans-serif" font-size="14">condition ?</text>
+  <line x1="260" y1="120" x2="200" y2="180" stroke="#000" stroke-width="2"/>
+  <text x="180" y="210" font-family="Roboto, sans-serif" font-size="12">VRAI</text>
+  <rect x="140" y="180" width="120" height="40" fill="#e8f5e9" stroke="#a5d6a7" stroke-width="2"/>
+  <text x="200" y="205" text-anchor="middle" font-family="Roboto, sans-serif" font-size="14">action (vrai)</text>
+  <line x1="340" y1="120" x2="400" y2="180" stroke="#000" stroke-width="2"/>
+  <text x="420" y="210" font-family="Roboto, sans-serif" font-size="12">FAUX</text>
+  <rect x="360" y="180" width="120" height="40" fill="#ffebee" stroke="#ef9a9a" stroke-width="2"/>
+  <text x="420" y="205" text-anchor="middle" font-family="Roboto, sans-serif" font-size="14">action (faux)</text>
+</svg>

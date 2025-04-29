@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structure conditionnelle en algorithmique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Roboto', sans-serif; background: #f4f7fc; color: #333; margin: 0; padding: 0; }
+    .container { max-width: 900px; margin: 2rem auto; background: #fff; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    header { text-align: center; margin-bottom: 2rem; }
+    header h1 { margin: 0; color: #2196f3; }
+    .subtitle { color: #555; }
+    h2 { color: #2196f3; margin-top: 2rem; }
+    h3 { color: #1976d2; margin-top: 1rem; }
+    figure { margin: 1rem 0; text-align: center; }
+    figure img { max-width: 100%; height: auto; border-radius: 4px; }
+    figcaption { font-size: 0.9rem; color: #666; margin-top: 0.5rem; }
+    pre { background: #f0f0f0; padding: 1rem; overflow-x: auto; border-left: 4px solid #2196f3; }
+    code { font-family: monospace; }
+    .exercise { background: #e3f2fd; padding: 1rem; border-left: 4px solid #1976d2; margin-top: 2rem; }
+    .exercise h2 { margin-top: 0; }
+    ol { margin-left: 1.2rem; }
+    footer { text-align: center; margin-top: 2rem; color: #777; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Structure Conditionnelle en Algorithmique</h1>
+    </header>
+    <section>
+      <h2>Introduction</h2>
+      <p>Les structures conditionnelles permettent d'exécuter des instructions différentes en fonction de conditions booléennes. Elles sont fondamentales pour le contrôle de flux dans les algorithmes. On distingue principalement : <code>SI ... ALORS</code>, <code>SI ... ALORS ... SINON</code> et <code>SI ... SINON SI ... SINON</code>.</p>
+      <div class="figures" style="text-align:center;">
+        <figure style="display:inline-block; width:30%; margin:0 1%;">
+          <img src="images/if_simple.svg" alt="IF simple">
+          <figcaption>IF simple</figcaption>
+        </figure>
+        <figure style="display:inline-block; width:30%; margin:0 1%;">
+          <img src="images/if_else.svg" alt="IF...ELSE">
+          <figcaption>IF...ELSE</figcaption>
+        </figure>
+        <figure style="display:inline-block; width:30%; margin:0 1%;">
+          <img src="images/if_elseif.svg" alt="IF...ELIF...ELSE">
+          <figcaption>IF...ELIF...ELSE</figcaption>
+        </figure>
+      </div>
+      <p>On distingue :</p>
+      <ul>
+        <li><strong>IF simple</strong> : une seule branche exécutée si la condition est vraie.</li>
+        <li><strong>IF...ELSE</strong> : deux branches, pour vrai et pour faux.</li>
+        <li><strong>IF...ELIF...ELSE</strong> : plusieurs branches, on teste condition1, condition2, sinon action par défaut.</li>
+      </ul>
+      <h3>Exemple Python</h3>
+      <pre><code class="python"># IF simple
+if x > 0:
+    print("Positif")
+
+# IF...ELSE
+if x > 0:
+    print("Positif")
+else:
+    print("Non positif")
+
+# IF...ELIF...ELSE
+if x > 0:
+    print("Positif")
+elif x < 0:
+    print("Négatif")
+else:
+    print("Zéro")</code></pre>
+    </section>
+    <section>
+      <h2>1. IF simple</h2>
+      <h3>Pseudocode</h3>
+      <pre><code>SI condition ALORS
+    instruction
+FIN SI</code></pre>
+      <p>Si <code>condition</code> est vraie, on exécute <code>instruction</code>. Sinon, on ne fait rien et on poursuit.</p>
+      <h3>Organigramme</h3>
+      <figure>
+        <img src="images/if_simple.svg" alt="Organigramme IF simple">
+        <figcaption>Organigramme IF simple : exécution de l’instruction si la condition est vraie, sinon sortie de la structure</figcaption>
+      </figure>
+      <p>En cas de vrai, le flux exécute l’instruction puis revient à la séquence principale. En cas de faux, on sort directement de la condition.</p>
+      <h3>Exemple en Python</h3>
+      <pre><code class="python">if condition:
+    instruction</code></pre>
+    </section>
+    <section>
+      <h2>2. IF...ELSE</h2>
+      <h3>Pseudocode</h3>
+      <pre><code>SI condition ALORS
+    instruction_vrai
+SINON
+    instruction_faux
+FIN SI</code></pre>
+      <p>Si <code>condition</code> est vraie, on exécute <code>instruction_vrai</code>, sinon <code>instruction_faux</code>.</p>
+      <h3>Organigramme</h3>
+      <figure>
+        <img src="images/if_else.svg" alt="Organigramme IF...ELSE">
+        <figcaption>Organigramme IF...ELSE : deux branches selon que la condition est vraie ou fausse</figcaption>
+      </figure>
+      <p>Le flux se divise en deux chemins : la branche « VRAI » exécute <code>instruction_vrai</code>, puis les deux branches se rejoignent après la condition. La branche « FAUX » exécute <code>instruction_faux</code>.</p>
+      <h3>Exemple en Python</h3>
+      <pre><code class="python">if condition:
+    instruction_vrai
+else:
+    instruction_faux</code></pre>
+    </section>
+    <section>
+      <h2>3. IF...SINON SI...SINON</h2>
+      <h3>Pseudocode</h3>
+      <pre><code>SI condition1 ALORS
+    instruction1
+SINON SI condition2 ALORS
+    instruction2
+SINON
+    instruction_defaut
+FIN SI</code></pre>
+      <p>Test multiple conditions séquentiellement. La première vraie exécute sa branche et quitte la structure.</p>
+      <h3>Organigramme</h3>
+      <figure>
+        <img src="images/if_elseif.svg" alt="Organigramme IF...SINON SI...SINON">
+        <figcaption>Organigramme IF...SINON SI...SINON : tests séquentiels de plusieurs conditions</figcaption>
+      </figure>
+      <p>Chaque condition est évaluée dans l’ordre : la première vraie déclenche son action et termine la structure. Si aucune n'est vraie, on exécute l’action par défaut.</p>
+      <h3>Exemple en Python</h3>
+      <pre><code class="python">if condition1:
+    instruction1
+elif condition2:
+    instruction2
+else:
+    instruction_defaut</code></pre>
+    </section>
+    <section class="exercise">
+      <h2>Exercices</h2>
+      <ol>
+        <li>Pseudocode + organigramme : vérifier si un nombre est pair ou impair.</li>
+        <li>Algorithme : déterminer l’âge légal de vote et afficher un message adapté.</li>
+        <li>Pseudocode : calculer la note finale : ≥ 90 : Excellent, ≥ 75 : Bien, ≥ 60 : Moyen, sinon : À revoir.</li>
+        <li>Organigramme : valider l’accès à une zone sécurisée (mot de passe + autorisation).</li>
+        <li>Pseudocode : classer trois nombres par ordre croissant.</li>
+        <li>Organigramme : calculer le maximum de deux nombres.</li>
+        <li>Pseudocode : calculer la remise : si montant ≥ 100 : 10%, sinon : 0%.</li>
+        <li>Algorithme : valider la note d’un étudiant (0 ≤ note ≤ 20).</li>
+        <li>Pseudocode : déterminer le signe d’un nombre (positif, négatif, zéro).</li>
+        <li>Organigramme : évaluer le tarif du billet : enfant (< 12), adulte (12–64), senior (≥ 65).</li>
+      </ol>
+      <p><strong>Consignes pédagogiques :</strong></p>
+      <ul>
+        <li><strong>Ex.1 :</strong> Rédiger le pseudocode et dessiner l’organigramme pour tester la parité d’un nombre (utiliser <code>modulo %</code>).</li>
+        <li><strong>Ex.2 :</strong> Écrire un algorithme demandant l’âge de l’utilisateur et affichant « Majeur » ou « Mineur ».</li>
+        <li><strong>Ex.3 :</strong> Pseudocode pour attribuer une appréciation selon une note : ≥90 : Excellent, ≥75 : Bien, ≥60 : Moyen, sinon : À revoir.</li>
+        <li><strong>Ex.4 :</strong> Organigramme validant l’accès à une zone sécurisée (saisie de mot de passe + vérification d’autorisation).</li>
+        <li><strong>Ex.5 :</strong> Pseudocode pour trier trois nombres par ordre croissant (utiliser comparaisons imbriquées).</li>
+        <li><strong>Ex.6 :</strong> Organigramme pour calculer le maximum entre deux nombres.</li>
+        <li><strong>Ex.7 :</strong> Pseudocode calculant une remise de 10 % si le montant est ≥100, sinon 0 %.</li>
+        <li><strong>Ex.8 :</strong> Algorithme validant une note d’étudiant (0 ≤ note ≤ 20) et affichant un message d’erreur en cas de hors bornes.</li>
+        <li><strong>Ex.9 :</strong> Pseudocode déterminant si un nombre est positif, négatif ou nul.</li>
+        <li><strong>Ex.10 :</strong> Organigramme évaluant le tarif d’un billet selon l’âge : enfant (< 12 ans), adulte (12–64 ans), senior (≥ 65 ans).</li>
+      </ul>
+    </section>
+    <footer>
+      <p> Réalisé par Fr. EL ANTIR Yassine</p>
+    </footer>
+  </div>
+</body>
+</html>
