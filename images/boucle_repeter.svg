@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8fafc"/>
+  <text x="300" y="30" text-anchor="middle" font-size="24" font-family="Arial" fill="#2563eb" font-weight="bold">Structure de la boucle RÉPÉTER</text>
+  
+  <!-- Schéma de flux -->
+  <rect x="250" y="60" width="100" height="50" rx="10" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  <text x="300" y="90" text-anchor="middle" font-size="16" fill="white" font-family="Arial">Début</text>
+  
+  <polyline points="300,110 300,140" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <rect x="180" y="140" width="240" height="50" rx="10" fill="#22c55e" stroke="#166534" stroke-width="2"/>
+  <text x="300" y="170" text-anchor="middle" font-size="16" fill="white" font-family="Arial">Initialisation variable</text>
+  
+  <polyline points="300,190 300,220" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <rect x="180" y="220" width="240" height="50" rx="10" fill="#a855f7" stroke="#6b21a8" stroke-width="2"/>
+  <text x="300" y="250" text-anchor="middle" font-size="16" fill="white" font-family="Arial">Instructions de la boucle</text>
+  
+  <polyline points="300,270 300,300" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <path d="M200,300 L400,300 L350,350 L250,350 Z" fill="#fbbf24" stroke="#b45309" stroke-width="2"/>
+  <text x="300" y="330" text-anchor="middle" font-size="16" fill="white" font-family="Arial">Condition vraie?</text>
+  
+  <polyline points="400,325 450,325 450,170 420,170" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="430" y="305" font-size="14" fill="#555" font-family="Arial">Non</text>
+  
+  <polyline points="250,350 200,375 200,390" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="225" y="380" font-size="14" fill="#555" font-family="Arial">Oui</text>
+  
+  <circle cx="200" cy="400" r="10" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+  <text x="240" y="405" font-size="16" fill="#ef4444" font-family="Arial">Fin</text>
+    
+  <!-- Marqueur de flèche -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 L4,5 z" fill="#555" />
+    </marker>
+  </defs>
+</svg>

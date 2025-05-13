@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les structures itératives en Algorithme et Python</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        h1 {
+            color: #1e40af;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2563eb;
+            margin-top: 30px;
+            border-left: 5px solid #3b82f6;
+            padding-left: 15px;
+            font-size: 1.8rem;
+        }
+        h3 {
+            color: #4f46e5;
+            margin-top: 25px;
+            font-size: 1.4rem;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .info-box {
+            background-color: #e0f2fe;
+            border-left: 5px solid #38bdf8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning-box {
+            background-color: #fff7ed;
+            border-left: 5px solid #fb923c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .algo {
+            background-color: #f1f5f9;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        code {
+            background-color: #f1f5f9;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        .img-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        .img-container img {
+            max-width: 90%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .exercise {
+            background-color: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 15px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .example {
+            background-color: #f5f3ff;
+            border-left: 5px solid #8b5cf6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .deux-colonnes {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .colonne {
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            .deux-colonnes {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Les structures itératives en Algorithme et Python</h1>
+
+    <div class="card">
+        <h2>Introduction aux structures itératives</h2>
+        <p>
+            Les <strong>structures itératives</strong>, également appelées <strong>boucles</strong>, sont des éléments fondamentaux
+            en algorithmique et en programmation. Elles permettent d'exécuter plusieurs fois un même bloc d'instructions,
+            ce qui est essentiel pour automatiser des tâches répétitives.
+        </p>
+        <div class="info-box">
+            <p><strong>Définition :</strong> Une structure itérative (ou boucle) est une séquence d'instructions qui est exécutée 
+            plusieurs fois jusqu'à ce qu'une condition particulière soit atteinte.</p>
+        </div>
+        <p>Il existe trois types principaux de structures itératives :</p>
+        <ul>
+            <li><strong>La boucle POUR (for)</strong> : utilisée lorsque le nombre d'itérations est connu à l'avance</li>
+            <li><strong>La boucle TANT QUE (while)</strong> : utilisée lorsque le nombre d'itérations est inconnu et dépend d'une condition</li>
+            <li><strong>La boucle RÉPÉTER...JUSQU'À (do...while)</strong> : similaire à TANT QUE, mais garantit au moins une exécution</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>1. La boucle POUR (for)</h2>
+        <p>
+            La boucle <strong>POUR</strong> est utilisée lorsque vous connaissez à l'avance le nombre exact de fois que vous 
+            souhaitez exécuter un bloc d'instructions. Elle est particulièrement adaptée aux parcours de collections 
+            comme les listes, les chaînes de caractères ou les plages de nombres.
+        </p>
+
+        <div class="img-container">
+            <img src="images/boucle_pour.svg" alt="Schéma de la boucle POUR">
+        </div>
+
+        <h3>Syntaxe en pseudo-code (algorithme)</h3>
+        <div class="algo">
+            POUR variable DE valeur_début À valeur_fin [PAR pas] FAIRE<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;instructions<br>
+            FIN POUR
+        </div>
+
+        <div class="warning-box">
+            <p>Note : Le paramètre <code>pas</code> est optionnel et vaut 1 par défaut.</p>
+        </div>
+
+        <h3>Syntaxe en Python</h3>
+        <p>En Python, la boucle <code>for</code> est généralement utilisée avec la fonction <code>range()</code> pour les séquences numériques :</p>
+        <pre>
+# Syntaxe de base
+for variable in range(début, fin, pas):
+    # instructions
+            
+# Sans spécifier le début (commence à 0)
+for variable in range(fin):
+    # instructions
+        </pre>
+
+        <div class="info-box">
+            <p><strong>Attention :</strong> En Python, <code>range(début, fin)</code> génère des nombres de <code>début</code> à <code>fin-1</code>.</p>
+        </div>
+
+        <h3>Exemples en pseudo-code et Python</h3>
+        <div class="example">
+            <h4>Exemple 1: Afficher les nombres de 1 à 5</h4>
+            <div class="deux-colonnes">
+                <div class="colonne">
+                    <p><strong>Pseudo-code :</strong></p>
+                    <div class="algo">
+                        POUR i DE 1 À 5 FAIRE<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;AFFICHER i<br>
+                        FIN POUR
+                    </div>
+                </div>
+                <div class="colonne">
+                    <p><strong>Python :</strong></p>
+                    <pre>
+for i in range(1, 6):
+    print(i)
+                    </pre>
+                </div>
+            </div>
+            <p><strong>Résultat :</strong> 1 2 3 4 5</p>
+        </div>
+
+        <div class="example">
+            <h4>Exemple 2: Calculer la somme des nombres de 1 à 10</h4>
+            <div class="deux-colonnes">
+                <div class="colonne">
+                    <p><strong>Pseudo-code :</strong></p>
+                    <div class="algo">
+                        somme ← 0<br>
+                        POUR i DE 1 À 10 FAIRE<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;somme ← somme + i<br>
+                        FIN POUR<br>
+                        AFFICHER somme
+                    </div>
+                </div>
+                <div class="colonne">
+                    <p><strong>Python :</strong></p>
+                    <pre>
+somme = 0
+for i in range(1, 11):
+    somme += i
+print(somme)  # Affiche 55
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <h4>Exemple 3: Parcourir une chaîne de caractères</h4>
+            <p><strong>Python :</strong></p>
+            <pre>
+mot = "Python"
+for lettre in mot:
+    print(lettre)
+            </pre>
+            <p><strong>Résultat :</strong> P y t h o n (chaque lettre sur une ligne différente)</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>2. La boucle TANT QUE (while)</h2>
+        <p>
+            La boucle <strong>TANT QUE</strong> exécute un bloc d'instructions tant qu'une condition spécifiée est vraie.
+            Contrairement à la boucle POUR, le nombre d'itérations n'est pas connu à l'avance et dépend de l'évolution 
+            de la condition au cours de l'exécution.
+        </p>
+
+        <div class="img-container">
+            <img src="images/boucle_tantque.svg" alt="Schéma de la boucle TANT QUE">
+        </div>
+
+        <div class="warning-box">
+            <p><strong>Important :</strong> Si la condition est fausse dès le départ, le bloc d'instructions ne sera jamais exécuté.</p>
+        </div>
+
+        <h3>Syntaxe en pseudo-code (algorithme)</h3>
+        <div class="algo">
+            TANT QUE condition FAIRE<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;instructions<br>
+            FIN TANT QUE
+        </div>
+
+        <h3>Syntaxe en Python</h3>
+        <pre>
+while condition:
+    # instructions
+        </pre>
+
+        <h3>Exemples en pseudo-code et Python</h3>
+        <div class="example">
+            <h4>Exemple 1: Compter jusqu'à 5</h4>
+            <div class="deux-colonnes">
+                <div class="colonne">
+                    <p><strong>Pseudo-code :</strong></p>
+                    <div class="algo">
+                        compteur ← 1<br>
+                        TANT QUE compteur <= 5 FAIRE<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;AFFICHER compteur<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;compteur ← compteur + 1<br>
+                        FIN TANT QUE
+                    </div>
+                </div>
+                <div class="colonne">
+                    <p><strong>Python :</strong></p>
+                    <pre>
+compteur = 1
+while compteur <= 5:
+    print(compteur)
+    compteur += 1
+                    </pre>
+                </div>
+            </div>
+            <p><strong>Résultat :</strong> 1 2 3 4 5</p>
+        </div>
+
+        <div class="example">
+            <h4>Exemple 2: Demander un nombre jusqu'à ce qu'il soit positif</h4>
+            <div class="deux-colonnes">
+                <div class="colonne">
+                    <p><strong>Pseudo-code :</strong></p>
+                    <div class="algo">
+                        nombre ← -1<br>
+                        TANT QUE nombre < 0 FAIRE<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;AFFICHER "Entrez un nombre positif:"<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;LIRE nombre<br>
+                        FIN TANT QUE<br>
+                        AFFICHER "Merci, vous avez entré:", nombre
+                    </div>
+                </div>
+                <div class="colonne">
+                    <p><strong>Python :</strong></p>
+                    <pre>
+nombre = -1
+while nombre < 0:
+    nombre = int(input("Entrez un nombre positif: "))
+print(f"Merci, vous avez entré: {nombre}")
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <p><strong>Cas pratique :</strong> La boucle TANT QUE est particulièrement utile lorsque vous voulez continuer une action jusqu'à ce qu'une condition soit satisfaite, comme la validation d'une entrée utilisateur ou l'attente d'un événement.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>3. La boucle RÉPÉTER...JUSQU'À (do...while)</h2>
+        <p>
+            La boucle <strong>RÉPÉTER...JUSQU'À</strong> est similaire à la boucle TANT QUE, mais avec une différence cruciale : 
+            le test de la condition s'effectue à la fin de la boucle, ce qui garantit que le bloc d'instructions est exécuté 
+            <em>au moins une fois</em>.
+        </p>
+
+        <div class="img-container">
+            <img src="images/boucle_repeter.svg" alt="Schéma de la boucle RÉPÉTER...JUSQU'À">
+        </div>
+
+        <h3>Syntaxe en pseudo-code (algorithme)</h3>
+        <div class="algo">
+            RÉPÉTER<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;instructions<br>
+            JUSQU'À condition
+        </div>
+
+        <div class="warning-box">
+            <p><strong>Attention :</strong> La boucle s'arrête lorsque la condition devient VRAIE (contrairement à TANT QUE qui continue tant que la condition est vraie).</p>
+        </div>
+
+        <h3>Syntaxe en Python</h3>
+        <p>Python ne possède pas de structure équivalente directe à RÉPÉTER...JUSQU'À, mais on peut la simuler :</p>
+        <pre>
+# Méthode 1: avec while et une exécution garantie
+while True:
+    # instructions
+    if condition:
+        break
+
+# Méthode 2: avec un while et une première exécution forcée
+instructions
+while not condition:
+    instructions
+        </pre>
+
+        <h3>Exemples en pseudo-code et Python</h3>
+        <div class="example">
+            <h4>Exemple 1: Demander un mot de passe jusqu'à ce qu'il soit correct</h4>
+            <div class="deux-colonnes">
+                <div class="colonne">
+                    <p><strong>Pseudo-code :</strong></p>
+                    <div class="algo">
+                        RÉPÉTER<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;AFFICHER "Entrez le mot de passe:"<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;LIRE mot_de_passe<br>
+                        JUSQU'À mot_de_passe = "secret"<br>
+                        AFFICHER "Accès autorisé"
+                    </div>
+                </div>
+                <div class="colonne">
+                    <p><strong>Python :</strong></p>
+                    <pre>
+while True:
+    mot_de_passe = input("Entrez le mot de passe: ")
+    if mot_de_passe == "secret":
+        break
+print("Accès autorisé")
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <h4>Exemple 2: Jeu de devinette</h4>
+            <div class="deux-colonnes">
+                <div class="colonne">
+                    <p><strong>Pseudo-code :</strong></p>
+                    <div class="algo">
+                        nombre_secret ← 42<br>
+                        RÉPÉTER<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;AFFICHER "Devinez le nombre (entre 1 et 100):"<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;LIRE proposition<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;SI proposition < nombre_secret ALORS<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AFFICHER "Trop petit!"<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;SINON SI proposition > nombre_secret ALORS<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AFFICHER "Trop grand!"<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;FIN SI<br>
+                        JUSQU'À proposition = nombre_secret<br>
+                        AFFICHER "Bravo, vous avez trouvé!"
+                    </div>
+                </div>
+                <div class="colonne">
+                    <p><strong>Python :</strong></p>
+                    <pre>
+nombre_secret = 42
+
+while True:
+    proposition = int(input("Devinez le nombre (entre 1 et 100): "))
+    
+    if proposition < nombre_secret:
+        print("Trop petit!")
+    elif proposition > nombre_secret:
+        print("Trop grand!")
+    else:
+        break
+        
+print("Bravo, vous avez trouvé!")
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Tableau comparatif des trois types de boucles</h2>
+        <table>
+            <tr>
+                <th>Caractéristique</th>
+                <th>POUR (for)</th>
+                <th>TANT QUE (while)</th>
+                <th>RÉPÉTER...JUSQU'À (do...while)</th>
+            </tr>
+            <tr>
+                <td>Nombre d'itérations</td>
+                <td>Connu à l'avance</td>
+                <td>Non connu à l'avance</td>
+                <td>Non connu à l'avance</td>
+            </tr>
+            <tr>
+                <td>Test de la condition</td>
+                <td>Au début</td>
+                <td>Au début</td>
+                <td>À la fin</td>
+            </tr>
+            <tr>
+                <td>Exécution minimale</td>
+                <td>0 (si la plage est vide)</td>
+                <td>0 (si la condition est fausse dès le départ)</td>
+                <td>1 (toujours au moins une exécution)</td>
+            </tr>
+            <tr>
+                <td>Cas d'utilisation typique</td>
+                <td>Parcours de séquences, nombre fixe d'itérations</td>
+                <td>Traitement conditionnel, validation d'entrée</td>
+                <td>Quand une première exécution est toujours nécessaire</td>
+            </tr>
+            <tr>
+                <td>Implémentation directe en Python</td>
+                <td>Oui (<code>for</code>)</td>
+                <td>Oui (<code>while</code>)</td>
+                <td>Non (simulation nécessaire)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Points importants et pièges à éviter</h2>
+        
+        <h3>Boucles infinies</h3>
+        <div class="warning-box">
+            <p>Une <strong>boucle infinie</strong> est une boucle qui ne s'arrête jamais car sa condition de sortie n'est jamais atteinte. C'est généralement dû à une erreur de programmation.</p>
+        </div>
+        <div class="deux-colonnes">
+            <div class="colonne">
+                <p><strong>Exemple de boucle infinie en TANT QUE :</strong></p>
+                <pre>
+compteur = 1
+while compteur > 0:
+    print(compteur)
+    compteur += 1  # Le compteur augmente toujours, 
+                   # donc la condition reste toujours vraie
+                </pre>
+            </div>
+            <div class="colonne">
+                <p><strong>Solution :</strong></p>
+                <pre>
+compteur = 1
+while compteur < 10:  # Ajouter une condition de sortie
+    print(compteur)
+    compteur += 1
+                </pre>
+            </div>
+        </div>
+
+        <h3>Initialisation des variables</h3>
+        <div class="info-box">
+            <p>Toujours initialiser vos variables avant d'entrer dans une boucle, surtout pour les boucles TANT QUE.</p>
+        </div>
+
+        <h3>Incrémentation dans les boucles TANT QUE</h3>
+        <p>N'oubliez pas de mettre à jour les variables utilisées dans la condition de la boucle TANT QUE, sinon vous risquez de créer une boucle infinie.</p>
+
+        <h3>La structure break et continue en Python</h3>
+        <p>Python offre deux instructions spéciales pour contrôler le flux des boucles :</p>
+        <ul>
+            <li><code>break</code> : sort immédiatement de la boucle</li>
+            <li><code>continue</code> : passe directement à l'itération suivante</li>
+        </ul>
+        <div class="example">
+            <p><strong>Exemple avec break :</strong></p>
+            <pre>
+for i in range(1, 11):
+    if i == 5:
+        break  # Sort de la boucle quand i vaut 5
+    print(i)
+# Affiche: 1 2 3 4
+            </pre>
+            
+            <p><strong>Exemple avec continue :</strong></p>
+            <pre>
+for i in range(1, 6):
+    if i == 3:
+        continue  # Saute à l'itération suivante quand i vaut 3
+    print(i)
+# Affiche: 1 2 4 5
+            </pre>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Exercices pratiques</h2>
+        
+        <div class="exercise">
+            <h3>Exercice 1: Somme des nombres pairs</h3>
+            <p>Écrivez un programme qui calcule la somme des nombres pairs entre 1 et 100 en utilisant une boucle FOR.</p>
+            <p><em>Conseil: Un nombre est pair si le reste de sa division par 2 est égal à 0 (n % 2 == 0).</em></p>
+        </div>
+        
+        <div class="exercise">
+            <h3>Exercice 2: Table de multiplication</h3>
+            <p>Écrivez un programme qui affiche la table de multiplication d'un nombre saisi par l'utilisateur (de 1 à 10).</p>
+            <p><em>Exemple pour le nombre 7:</em></p>
+            <pre>
+7 x 1 = 7
+7 x 2 = 14
+...
+7 x 10 = 70
+            </pre>
+        </div>
+        
+        <div class="exercise">
+            <h3>Exercice 3: Validation d'entrée</h3>
+            <p>Écrivez un programme qui demande à l'utilisateur d'entrer un nombre entre 1 et 10. Si l'utilisateur entre un nombre en dehors de cette plage, le programme doit continuer à demander jusqu'à ce qu'un nombre valide soit entré.</p>
+            <p>Utilisez une boucle TANT QUE pour cet exercice.</p>
+        </div>
+        
+        <div class="exercise">
+            <h3>Exercice 4: Factorielle</h3>
+            <p>Écrivez un programme qui calcule la factorielle d'un nombre n saisi par l'utilisateur.</p>
+            <p><em>Rappel: La factorielle de n (notée n!) est le produit de tous les entiers positifs inférieurs ou égaux à n.</em></p>
+            <p>Exemple: 5! = 5 × 4 × 3 × 2 × 1 = 120</p>
+        </div>
+        
+        <div class="exercise">
+            <h3>Exercice 5: Nombres premiers</h3>
+            <p>Écrivez un programme qui vérifie si un nombre saisi par l'utilisateur est premier ou non.</p>
+            <p><em>Rappel: Un nombre premier est un nombre entier supérieur à 1 qui n'est divisible que par 1 et par lui-même.</em></p>
+            <p>Utilisez une boucle FOR et la structure break si nécessaire.</p>
+        </div>
+        
+        <div class="exercise">
+            <h3>Exercice 6: Suite de Fibonacci</h3>
+            <p>Écrivez un programme qui affiche les n premiers termes de la suite de Fibonacci, où n est saisi par l'utilisateur.</p>
+            <p><em>Rappel: La suite de Fibonacci commence par 0 et 1, puis chaque terme suivant est la somme des deux termes précédents.</em></p>
+            <p>Exemple: 0, 1, 1, 2, 3, 5, 8, 13, 21, ...</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Conclusion</h2>
+        <p>
+            Les structures itératives sont des outils puissants en programmation qui vous permettent d'automatiser des tâches 
+            répétitives. Chaque type de boucle (POUR, TANT QUE, RÉPÉTER...JUSQU'À) a ses propres cas d'utilisation et avantages.
+        </p>
+        <p>
+            <strong>Conseils pour bien choisir votre boucle :</strong>
+        </p>
+        <ul>
+            <li>Utilisez une boucle <strong>POUR</strong> lorsque vous connaissez le nombre d'itérations à l'avance.</li>
+            <li>Utilisez une boucle <strong>TANT QUE</strong> lorsque vous ne savez pas combien d'itérations seront nécessaires.</li>
+            <li>Utilisez une boucle <strong>RÉPÉTER...JUSQU'À</strong> (simulée en Python) lorsque vous voulez garantir au moins une exécution.</li>
+        </ul>
+        <p>
+            La maîtrise des structures itératives est fondamentale pour tout programmeur. Avec de la pratique,
+            vous deviendrez plus à l'aise pour choisir la bonne structure pour chaque situation.
+        </p>
+    </div>
+
+    <footer style="text-align: center; margin-top: 50px; color: #64748b; font-size: 0.9rem;">
+        <p>© 2025 - Cours sur les structures itératives en Algorithme et Python</p>
+    </footer>
+
+</body>
+</html>
